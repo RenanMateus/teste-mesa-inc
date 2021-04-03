@@ -24,10 +24,10 @@ export class LoginComponent {
 
 
   login() {
-    this.usuario.email = 'eve.holt@reqres.in';
-    this.usuario.password = 'citysli';
+    // this.usuario.email = 'eve.holt@reqres.in';
+    // this.usuario.password = 'citysli';
     this.fazendoLogin = true;
-    this.http.post(environment.apiUrl + 'login', this.usuario, { headers: this.headers, params: { delay: '3' } }).subscribe((response: any) => {
+    this.http.post(environment.apiUrl + 'login', { email: 'eve.holt@reqres.in', password: 'citysli' }, { headers: this.headers, params: { delay: '3' } }).subscribe((response: any) => {
       if (response) {
         sessionStorage.setItem('token', JSON.stringify(response.token));
         this.logado.emit(true);
