@@ -1,0 +1,39 @@
+<div class="row">
+  <div class="col-lg-12 margemCabecalho">
+    <h3>Locais Próximos</h3>
+  </div>
+
+  <div class="spinnerCarregando" *ngIf="carregando">
+    <div class="spinner-border"></div>
+    <br>
+    <span>Carregando Informações</span>
+  </div>
+
+  <div class="col-lg-12">
+    <button class="btn btn-success btn-sm" routerLink="/localidades">Visualizar Mapa</button>
+  </div>
+
+  <div class="col-lg-12" *ngIf="!carregando" style="overflow-x: auto; margin-top: 20px">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Nome</th>
+          <th scope="col">Status</th>
+          <th scope="col">Endereço</th>
+          <th scope="col">Icone</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let local of result">
+          <th scope="row">{{ local.name }}</th>
+          <th scope="row">{{ local.business_status === 'OPERATIONAL' ? 'Aberto' : 'Fechado Temporariamente' }}</th>
+          <th scope="row">{{ local.vicinity }}</th>
+          <th scope="row"><img [src]="local.icon"></th>
+        </tr>
+      </tbody>
+    </table>
+    <div class="centralizar">
+      <ngb-pagination [collectionSize]="76" [pageSize]="25" [(page)]="page" [maxSize]="4"></ngb-pagination>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,43 @@
+<div class="row">
+  <div class="col-lg-12 margemCabecalho">
+    <h3>Usuários</h3>
+  </div>
+
+  <div class="spinnerCarregando" *ngIf="carregando">
+    <div class="spinner-border"></div>
+    <br>
+    <span>Carregando Usuários</span>
+  </div>
+
+  <div class="col-lg-12" *ngIf="!carregando">
+    <button class="btn btn-primary float-right" (click)="novo()">Cadastrar Usuário</button>
+  </div>
+
+  <div class="col-lg-12" *ngIf="!carregando" style="overflow-x: auto; margin-top: 20px">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Nome</th>
+          <th scope="col">Email</th>
+          <th scope="col" style="text-align: end">Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let usuario of usuarios">
+          <th scope="row">{{ usuario.first_name + ' ' + usuario.last_name }}</th>
+          <th scope="row">{{ usuario.email }}</th>
+          <th scope="row" style="text-align: end">
+            <button class="btn btn-warning btn-sm" (click)="editar(usuario.id)" ngbTooltip="Editar Usuário"><i
+                class="fa fa-edit"></i></button>
+            <button class="btn btn-danger btn-sm" (click)="excluir(usuario.id)" ngbTooltip="Excluir Usuário"
+              style="margin-left: 10px; color: black;"><i class="fa fa-trash"></i></button>
+          </th>
+        </tr>
+      </tbody>
+    </table>
+    <div class="centralizar">
+      <ngb-pagination [collectionSize]="totalItens" [pageSize]="itensPorPagina" [(page)]="paginaAtual" (pageChange)="listarUsuarios($event)" [maxSize]="4">
+      </ngb-pagination>
+    </div>
+  </div>
+</div>

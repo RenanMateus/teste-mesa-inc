@@ -1,0 +1,43 @@
+.spinnerCarregando {
+  text-align: center;
+  color: #214478;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.centralizar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.margemCabecalho {
+  margin-top: 20px;
+}
+
+.margemLabel {
+  margin-top: 15px;
+}
+
+h5 {
+  font-size: 12pt !important;
+  margin-bottom: 5px !important;
+}
+
+.meuAlerta {
+  padding: 5px !important;
+  color: red !important;
+  border-radius: 8px !important;
+  font-size: 10pt !important;
+}
+
+input.ng-invalid.ng-touched,
+textarea.ng-invalid.ng-touched,
+select.ng-invalid.ng-touched {
+  border-color: red !important;
+}
+
+input.ng-reflect-minlength,
+input.ng-reflect-maxlength {
+  border-color: red !important;
+}

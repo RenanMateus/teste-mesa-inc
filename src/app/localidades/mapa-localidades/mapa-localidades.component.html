@@ -1,0 +1,21 @@
+<div class="row">
+  <div class="col-lg-12 margemCabecalho">
+    <h3>Locais Próximos</h3>
+  </div>
+
+  <div class="spinnerCarregando" *ngIf="carregando">
+    <div class="spinner-border"></div>
+    <br>
+    <span>Carregando Informações</span>
+  </div>
+
+  <div class="col-lg-12">
+    <button class="btn btn-success btn-sm" (click)="visualizarLista()">Visualizar Lista</button>
+  </div>
+
+  <div class="col-lg-12" *ngIf="!carregando" style="overflow-x: auto; margin-top: 20px">
+    <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="15" (mapClick)="obterDetalhes($event.placeId)">
+      <agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
+    </agm-map>
+  </div>
+</div>

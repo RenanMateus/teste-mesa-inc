@@ -1,0 +1,57 @@
+<div class="col-lg-12">
+
+  <div class="row">
+    <div class="col-lg-12 margemCabecalho">
+      <h3 class="card-title">Novo Usuário</h3>
+    </div>
+
+    <div class="col-lg-12 spinnerCarregando" *ngIf="salvando">
+      <div class="spinner-border"></div>
+      <br>
+      <span>Salvando</span>
+    </div>
+
+    <div class="col-lg-12" [hidden]="salvando">
+      <form #usuarioForm="ngForm" autocomplete="off">
+        <div class="row">
+          <div class="col-lg-4 col-md-4 col-sm-6 margemLabel">
+            <h5><b>Email*</b></h5>
+            <input class="form-control" name="email" placeholder="Email" [(ngModel)]="usuario.email" #email="ngModel"
+              autocomplete="none" email required>
+            <div class="meuAlerta" *ngIf="email.invalid && email.touched">
+              Informe o Email
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-4 col-sm-6 margemLabel">
+            <h5><b>Primeiro Nome*</b></h5>
+            <input class="form-control" name="primeiroNome" placeholder="Primeiro nome" [(ngModel)]="usuario.first_name"
+              #primeiroNome="ngModel" autocomplete="none" required>
+            <div class="meuAlerta" *ngIf="primeiroNome.invalid && primeiroNome.touched">
+              Informe o Primeiro Nome
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-4 col-sm-6 margemLabel">
+            <h5><b>Último Nome*</b></h5>
+            <input class="form-control" name="ultimoNome" placeholder="Último nome" [(ngModel)]="usuario.last_name"
+              #ultimoNome="ngModel" autocomplete="none" required>
+            <div class="meuAlerta" *ngIf="ultimoNome.invalid && ultimoNome.touched">
+              Informe o último Nome
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-4 margemLabel">
+            <h5><b>Foto</b></h5>
+            <input name="foto" type="file" (change)="transformarEmBase64($event.target)" accept="image/*">
+          </div>
+          <div class="col-lg-8 col-md-8 margemLabel" *ngIf="usuario.avatar">
+            <img [src]="usuario.avatar" width="200">
+          </div>
+        </div>
+        <div class="text-right margemLabel">
+          <button class="btn btn-success" [disabled]="usuarioForm.invalid" (click)="salvar()">Salvar</button>
+          <button class="btn btn-warning" style="margin-left: 10px" (click)="voltar()">Voltar</button>
+        </div>
+      </form>
+    </div>
+
+  </div>
+</div>

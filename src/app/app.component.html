@@ -1,0 +1,13 @@
+<div *ngIf="logado">
+  <app-navbar (logado)="verificarLogin($event)"></app-navbar>
+  <div class="col-lg-12">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+
+<div *ngIf="!logado">
+  <app-login (logado)="verificarLogin($event)" (cadastro)="verificarRota($event)" *ngIf="!cadastro"></app-login>
+
+  <app-cadastro-usuario (cadastro)="verificarRota($event)" *ngIf="cadastro"></app-cadastro-usuario>
+</div>
+<app-footer></app-footer>
