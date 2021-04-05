@@ -13,11 +13,9 @@ export class ListaLocalidadesComponent implements OnInit {
   page = 1;
   locais = new Array();
   latitudeLongitude: string;
-  // headers: HttpHeaders = new HttpHeaders({
-  //   'Access-Control-Allow-Origin': 'https://teste-mesa-inc.herokuapp.com',
-  //   'Access-Control-Allow-Methods': 'GET',
-  //   'Access-Control-Allow-Credentials': 'true'
-  // });
+  headers: HttpHeaders = new HttpHeaders({
+    'Access-Control-Allow-Origin': 'https://teste-mesa-inc.herokuapp.com'
+  });
   result = new Array();
   keyGoogle = 'AIzaSyDZ6w8Yz9beWeB6mYqEa07i79l-OGULvDY';
 
@@ -35,7 +33,7 @@ export class ListaLocalidadesComponent implements OnInit {
 
   buscarLocais() {
     this.http.get('https://maps.googleapis.com/maps/api/place/nearbysearch/json',
-      { params: { location: this.latitudeLongitude, radius: '5000', key: this.keyGoogle } /*, headers: this.headers, withCredentials: true */ })
+      { params: { location: this.latitudeLongitude, radius: '5000', key: this.keyGoogle }, headers: this.headers })
       .subscribe((response: any) => {
         console.log('resposta', response);
       }, () => {
