@@ -14,7 +14,11 @@ export class ListaLocalidadesComponent implements OnInit {
   locais = new Array();
   latitudeLongitude: string;
   headers: HttpHeaders = new HttpHeaders({
-    'Access-Control-Allow-Origin': '*'
+    'Access-Control-Allow-Origin': 'https://teste-mesa-inc.herokuapp.com/login',
+    'Origin': 'https://teste-mesa-inc.herokuapp.com/login',
+    'Access-Control-Request-Headers': 'origin, x-requested-with',
+    'Access-Control-Allow-Methods': 'GET',
+    'Access-Control-Allow-Credentials': 'true'
   });
   result = new Array();
   keyGoogle = 'AIzaSyDZ6w8Yz9beWeB6mYqEa07i79l-OGULvDY';
