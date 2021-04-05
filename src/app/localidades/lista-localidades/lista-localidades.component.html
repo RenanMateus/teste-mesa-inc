@@ -24,7 +24,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let local of result">
+        <tr *ngFor="let local of locais">
           <th scope="row">{{ local.name }}</th>
           <th scope="row">{{ local.business_status === 'OPERATIONAL' ? 'Aberto' : 'Fechado Temporariamente' }}</th>
           <th scope="row">{{ local.vicinity }}</th>
@@ -32,8 +32,8 @@
         </tr>
       </tbody>
     </table>
-    <div class="centralizar">
+    <!-- <div class="centralizar">
       <ngb-pagination [collectionSize]="76" [pageSize]="25" [(page)]="page" [maxSize]="4"></ngb-pagination>
-    </div>
+    </div> -->
   </div>
 </div>

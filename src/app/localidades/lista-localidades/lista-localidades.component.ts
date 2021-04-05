@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 
 import { Toasts } from '../../utils/alertas';
+import { ListaLocais } from './lista-locais.const';
 
 @Component({
   selector: 'app-lista-localidades',
@@ -28,6 +29,8 @@ export class ListaLocalidadesComponent implements OnInit {
       this.latitudeLongitude = `${geoSuccess.coords.latitude},${geoSuccess.coords.longitude}`;
       this.buscarLocais();
     });
+
+    this.locais = ListaLocais;
   }
 
 
